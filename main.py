@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, url_for, redirect
 import json, os
 
 app = Flask(__name__)
@@ -41,7 +41,7 @@ def hello_name(variable):
     return render_template('test.html', message = variable)
 
 @app.route('/login', methods=['POST'])
-def do_admin_login():
+def login():
 	users = readJson("users.json")['users']
 	for user in users:
 		if request.form['password'] == user['password'] and request.form['username'] ==  user['username']:
@@ -50,6 +50,11 @@ def do_admin_login():
 
 	session['wrong_password'] = True
 	return homeFunction()
+
+@app.route('/logout')
+def logout():
+		session.clear()
+		return redirect(url_for("homeFunction"))
 
 def readJson(path):
 	with open(path) as json_data:
