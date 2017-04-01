@@ -1,0 +1,21 @@
+{ 
+  "users": [   
+                     {  "name": "John Doe",  
+                        "email": "Doe",
+                        "username": "john",
+                        "password": "pass",
+                        "coins": 23,
+                        "prizes": [],
+                        "answeredQuestions": [1, 2, 3],
+                        "strike": 23 },
+
+                     {  "name": "Mario Doe",  
+                        "email": "Doe",
+                        "username": "mario",
+                        "password": "pass2",
+                        "coins": 23,
+                        "prizes": [],
+                        "answeredQuestions": [1, 2, 3],
+                        "strike": 23 }
+                 ]
+}

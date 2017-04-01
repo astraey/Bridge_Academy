@@ -1,12 +1,16 @@
-from flask import Flask, render_template, request
-
+from flask import Flask, render_template, request, session
+import json, os
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def homeFunction():
-    return render_template('home.html')
+	if session.get('wrong_password'):
+		return "wrong password"
+	if not session.get('logged_in'):
+		return render_template('login.html')
+	else:
+		return render_template('home.html')
 
 @app.route('/profile/')
 def profileFunction():
@@ -32,7 +36,21 @@ def singleExerciseFunction():
 def hello_name(variable):
     return render_template('test.html', message = variable)
 
+@app.route('/login', methods=['POST'])
+def do_admin_login():
+	users = readJson("users.json")['users']
+	for user in users:
+		if request.form['password'] == user['password'] and request.form['username'] ==  user['username']:
+			session['logged_in'] = True
+			return homeFunction()
 
+	session['wrong_password'] = True
+	return homeFunction()
 
-if __name__ == '__main__':
-    app.run()
+def readJson(path):
+	with open(path) as json_data:
+		return json.load(json_data)
+
+if __name__ == "__main__":
+    app.secret_key = os.urandom(12)
+    app.run(debug=True,host='0.0.0.0', port=5000)
