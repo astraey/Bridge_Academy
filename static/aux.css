@@ -13,12 +13,18 @@
 
 .prizeimg {
     padding: 10px;
-    width:50;
-    height:50;
     margin:0px auto;
     display:block;
 }
 
 .lessSpace {
     margin-bottom: -3px;
+}
+
+.imgSize {
+    height: 20%;
+}
+
+.afterDiv{
+    padding-bottom: 20px;
 }

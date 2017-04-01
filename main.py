@@ -36,11 +36,11 @@ def prizesFunction():
                 <div class="frontpage_square thumbnail">
 
                   <div class="prizeimg" align="center">
-                    <img src="'''+prize['img_url']+'''"">
+                    <img src="'''+prize['img_url']+'''" class="imgSize"">
 
                   </a>
                   </div>
-                  <div class="cntr">
+                  <div class="cntr afterDiv">
                   <p class="lessSpace"><b>'''+prize['name']+'''</b></p>
                   <p class="lessSpace">'''+prize['price']+" coins"'''</p>
                   </div>
