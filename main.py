@@ -19,7 +19,7 @@ def profileFunction():
 @app.route('/prizes/')
 def prizesFunction():
 
-    generatedBody = '<div class="row">'
+    generatedBody = '<div class="row row2">'
 
     # A list of the prizes
     prizes = readJson("prizes.json")['prizes']
@@ -32,18 +32,16 @@ def prizesFunction():
         generatedBody += '''
 
 
-
-
-
     <div class="col-sm-4 panel">
-
-            <a href="#">
                 <div class="frontpage_square thumbnail">
-                  <a href="NUEVA">
-                    <img src="'''+prize['img_url']+'''" style="width:50;height:50;">
+                  <div class="prizeimg" align="center">
+                    <img src="'''+prize['img_url']+'''"">
                   </a>
-                  <p><b>'''+prize['name']+'''</b></p>
-                  <p><b>'''+prize['price']+'''</b></p>
+                  </div>
+                  <div class="cntr">
+                  <p class="lessSpace"><b>'''+prize['name']+'''</b></p>
+                  <p class="lessSpace">'''+prize['price']+" coins"'''</p>
+                  </div>
                 </div>
             </a>
 

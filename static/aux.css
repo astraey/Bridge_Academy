@@ -1,0 +1,24 @@
+.row2 {
+    padding: 80px;
+}
+
+.cntr {
+    text-align: center;
+}
+
+.main {
+    padding: 40px;
+    margin-bottom: -80px;
+}
+
+.prizeimg {
+    padding: 10px;
+    width:50;
+    height:50;
+    margin:0px auto;
+    display:block;
+}
+
+.lessSpace {
+    margin-bottom: -3px;
+}
