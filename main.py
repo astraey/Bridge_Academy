@@ -32,6 +32,10 @@ def exercisesFunction():
 def singleExerciseFunction():
 	return singleExercise.singleExerciseGenerator()
 
+@app.route('/about_us/')
+def about_usFunction():
+	return render_template('about_us.html')
+
 @app.route('/test/<variable>')
 def hello_name(variable):
     return render_template('test.html', message = variable)
