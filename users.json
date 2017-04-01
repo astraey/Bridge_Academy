@@ -1,6 +1,6 @@
-{ 
-  "users": [   
-                     {  "name": "John Doe",  
+{
+  "users": [
+                     {  "name": "John Doe",
                         "email": "Doe",
                         "username": "john",
                         "password": "pass",
@@ -9,7 +9,7 @@
                         "answeredQuestions": [1, 2, 3],
                         "strike": 23 },
 
-                     {  "name": "Mario Doe",  
+                     {  "name": "Mario Doe",
                         "email": "Doe",
                         "username": "mario",
                         "password": "pass2",

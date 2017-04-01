@@ -1,0 +1,31 @@
+{
+  "prizes": [
+                     {  "name": "Red Truck",
+                        "category": "Toy",
+                        "img_url": "url here",
+                        "price": "20",
+                        "description": "A shiny red truck"
+                      },
+
+                      {  "name": "Blue Truck",
+                         "category": "Toy",
+                         "img_url": "url here",
+                         "price": "20",
+                         "description": "A shiny red truck"
+                       },
+
+                       {  "name": "Green Truck",
+                          "category": "Toy",
+                          "img_url": "url here",
+                          "price": "20",
+                          "description": "A shiny red truck"
+                        },
+
+                      {  "name": "Doll",
+                         "category": "Toy",
+                         "img_url": "url here",
+                         "price": "20",
+                         "description": "Lovely Doll"
+                       }
+                 ]
+}

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, url_for, redirect
+from flask import Flask, render_template, request, session, url_for, redirect, Markup
 import json, os
 
 app = Flask(__name__)
@@ -18,7 +18,44 @@ def profileFunction():
 
 @app.route('/prizes/')
 def prizesFunction():
-    return render_template('prizes.html')
+
+    generatedBody = '<div class="row">'
+
+    # A list of the prizes
+    prizes = readJson("prizes.json")['prizes']
+
+
+
+
+    for prize in prizes:
+
+        generatedBody += '''
+
+
+
+
+
+    <div class="col-sm-4 panel">
+
+            <a href="#">
+                <div class="frontpage_square thumbnail">
+                  <a href="NUEVA">
+                    <img src="'''+prize['img_url']+'''" style="width:50;height:50;">
+                  </a>
+                  <p><b>'''+prize['name']+'''</b></p>
+                  <p><b>'''+prize['price']+'''</b></p>
+                </div>
+            </a>
+
+    </div>
+
+                         '''
+
+    generatedBody += '</div>'
+    generatedBody = Markup(generatedBody)
+
+
+    return render_template('prizes.html', cool_body = generatedBody)
 
 @app.route('/singlePrize/')
 def singlePrizeFunction():
