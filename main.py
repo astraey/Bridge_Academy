@@ -34,8 +34,10 @@ def prizesFunction():
 
     <div class="col-sm-4 panel">
                 <div class="frontpage_square thumbnail">
+
                   <div class="prizeimg" align="center">
                     <img src="'''+prize['img_url']+'''"">
+
                   </a>
                   </div>
                   <div class="cntr">

@@ -2,30 +2,58 @@
   "prizes": [
                      {  "name": "Red Truck",
                         "category": "Toy",
-                        "img_url": "url here",
+                        "img_url": "/static/media/redtruck.png",
                         "price": "20",
-                        "description": "A shiny red truck"
+                        "description": "Made of Quality Die Cast Metal. Doors Openable. Pull Back Action Drives Truck Forward. Scale is 1:32."
                       },
 
-                      {  "name": "Blue Truck",
-                         "category": "Toy",
-                         "img_url": "url here",
+                      {  "name": "Playground Set",
+                         "category": "Building Sets & Blocks",
+                         "img_url": "/static/media/playmobil.png",
                          "price": "20",
-                         "description": "A shiny red truck"
+                         "description": "The Playmobil Playground has some outdoor fun for everyone. Kids will love racing figures down the slide or giving them a push on the swing. Figures can bend, sit, stand and turn their heads. Encourages children to explore and learn while having fun. Set also includes one adult and four children figures, kite, park bench, sand toys, cooler and additional accessories."
                        },
 
-                       {  "name": "Green Truck",
-                          "category": "Toy",
-                          "img_url": "url here",
+                       {  "name": "Amazon Fire Tablet",
+                          "category": "Technology",
+                          "img_url": "/static/media/fire.png",
                           "price": "20",
-                          "description": "A shiny red truck"
+                          "description": "Beautiful 7'' IPS display and 1.3 GHz quad-core processor. Available in four colors. Now with the Alexa cloud-based voice service - just press and ask. Enjoy millions of movies, TV shows, songs, Kindle e-books, apps and games. 8 or 16 GB of internal storage and a microSD slot for up to 200 GB of expandable storage. Prime members get unlimited access to a huge selection of songs, books, videos and more. Up to 7 hours of battery life."
                         },
 
-                      {  "name": "Doll",
+                      {  "name": "Princess Rapunzel Doll",
                          "category": "Toy",
-                         "img_url": "url here",
+                         "img_url": "/static/media/doll.png",
                          "price": "20",
-                         "description": "Lovely Doll"
-                       }
-                 ]
+                         "description": "Doll comes with removable shoes. Doll has movie-inspired features. Doll features a shimmering gown in her signature color. Gown has beautiful ombre and glitter accents. Includes doll, outfit, and pair of shoes."
+                       },
+
+                       {  "name": "Rubik's Cube Game",
+                          "category": "Toy",
+                          "img_url": "/static/media/cube.png",
+                          "price": "20",
+                          "description": "Billions of combinations, one solution. Comes with a display stand. Rubik's Cube game challenges you to figure out how to get all the colors matched up on all 9 sides. Includes Rubik's Cube and display stand."
+                        },
+
+                        {  "name": "Raspberry Pi 3 Model B Motherboard",
+                           "category": "Technology",
+                           "img_url": "/static/media/pi.png",
+                           "price": "20",
+                           "description": "A shiny red truck"
+                         },
+
+                         {  "name": "Red Truck",
+                            "category": "Toy",
+                            "img_url": "url here",
+                            "price": "20",
+                            "description": "A shiny red truck"
+                          },
+
+                          {  "name": "Doll",
+                             "category": "Toy",
+                             "img_url": "url here",
+                             "price": "20",
+                             "description": "Lovely Doll"
+                           }
+                   ]
 }
