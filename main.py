@@ -132,7 +132,36 @@ def singlePrizeFunction(id):
 
 @app.route('/exercises/')
 def exercisesFunction():
-    return render_template('exercises.html')
+
+    generatedBody = '<div class="row row2">'
+
+    # A list of the prizes
+    categories = readJson("questions.json")["questions"]
+
+    for category in categories:
+
+        generatedBody += '''
+
+    <div class="col-sm-4 panel">
+                <a style="text-decoration:none" href="/exercises/'''+category.lower()+'''">
+                <div class="frontpage_square thumbnail">
+                  <div class="prizeimg" align="center">
+                    <img src="/static/media/'''+category.lower()+'''.jpg" class="imgSize"">
+                    <p class="space"><b>'''+category+'''</b></p>
+                  </div>
+                </div>
+                </a>
+            </a>
+
+    </div>
+
+                         '''
+
+    generatedBody += '</div>'
+    generatedBody = Markup(generatedBody)
+
+
+    return render_template('exercises.html', cool_body = generatedBody)
 
 @app.route('/singleExercise/')
 def singleExerciseFunction():
