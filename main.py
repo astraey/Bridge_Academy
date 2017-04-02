@@ -257,7 +257,6 @@ def exercisesFunction():
 @app.route('/exercises/<id>')
 def singleExercisesFunction(id):
 
-
     generatedBody = '<div class="row row2">'
 
     categories = readJson("questions.json")
@@ -265,36 +264,78 @@ def singleExercisesFunction(id):
         if str(categories[category]["id"]) == str(id):
             numQ = str(len(categories[category]["questions"]))
             #return str(categories[category]["questions"][str(random.randint(1,int(numQ)))])
-            tempVar = categories[category]["questions"][str(random.randint(1,int(numQ)))]
+            randomNum = random.randint(1,int(numQ))
+            tempVar = categories[category]["questions"][str(randomNum)]
 
 
 #########################################################################################
 
             generatedBody += '''<div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv">'''
 
-            generatedBody += '''<p class="cntr lessSpace"><b>'''+tempVar["text"]+'''</b></p><form>'''
-
-            for answer in tempVar['respuestas']:
-
+            generatedBody += '''<p class="cntr lessSpace"><b>'''+tempVar["text"]+'''</b></p><form method="post">'''
+            
+            resp = []
+            
+            for i in range(0, len(tempVar['respuestas'])):
+                resp.append(tempVar['respuestas'][i])
 
                 generatedBody += '''
-
                 <div class="checkbox">
-                  <input type="radio" name="hola">'''+answer+'''</input>
+                <input type="radio" name="check[] value="'''+str(i)+'''"">'''+str(tempVar['respuestas'][i])+'''</input>
                 </div>
-
                 '''
 
+            selected = request.form.getlist('check[]')          
 
-
-
-            generatedBody += '</form></div></div></div></div>'
-    generatedBody = Markup(generatedBody)
+            generatedBody += '''<a href="/exercises/'''+str(id)+'''/'''+str(randomNum)+'''/'''+str(selected)+'''" class="btn btn-info" role="button">Submit</a></form></div></div></div></div>'''
+            generatedBody = Markup(generatedBody)
 
 
     return render_template('exercises.html', cool_body = generatedBody)
 
+@app.route('/exercises/<id>/<q>/<r>')
+def validateExercisesFunction(id, q, r):
 
+
+    generatedBody = '<div class="row row2">'
+
+    categories = readJson("questions.json")
+    for category in categories:
+        if str(categories[category]["id"]) == str(id):
+            for question in categories[category]["questions"]:
+                if categories[category][question]['id'] == str(q):
+                    correct = categories[category][question]['correct']
+                    correctIndex = categories[category][question].index(correct)
+                    if correctIndex == r:
+                        sum2points(int(session.get('id_user')))
+    return "no correct answer"
+                            
+
+#########################################################################################
+
+    generatedBody += '''<div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv">'''
+
+    generatedBody += '''<p class="cntr lessSpace"><b>'''+tempVar["text"]+'''</b></p><form>'''
+
+    for answer in tempVar['respuestas']:
+
+
+        generatedBody += '''
+
+        <div class="checkbox">
+            <input type="radio" name="hola">'''+answer+'''</input>
+        </div>
+
+        '''
+
+
+
+
+    generatedBody += '</form></div></div></div></div>'
+    generatedBody = Markup(generatedBody)
+
+
+    return render_template('exercises.html', cool_body = generatedBody)
 
 
 @app.route('/about_us/')
@@ -327,6 +368,9 @@ def readJson(path):
 	with open(path) as json_data:
 		return json.load(json_data)
 
+def sum2points(userid):
+    users = readJson("users.json")
+    users['users'][int(index)]['coins'] += 2
 
 
 
