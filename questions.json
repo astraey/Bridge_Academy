@@ -2,8 +2,8 @@
     "Science": {
         "id": 0,
         "questions": {
-        "1": {"doors":4, "transmission":"automatic"},
-        "2": {"doors":4, "transmission":"automatic"}
+        "1": {"text":"titulo pregunta", "respuestas":["respuesta", "respuesta", "dñkaflksdjf", "dsñfadsfaf"], "correct": "1"},
+        "1": {"text":"titulo pregunta", "respuestas":["respuesta", "respuesta", "dñkaflksdjf", "dsñfadsfaf"], "correct": "1"}
         }
     },
     "Tech": {

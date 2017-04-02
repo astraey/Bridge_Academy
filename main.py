@@ -257,11 +257,44 @@ def exercisesFunction():
 @app.route('/exercises/<id>')
 def singleExercisesFunction(id):
 
+
+    generatedBody = '<div class="row row2">'
+
     categories = readJson("questions.json")
     for category in categories:
         if str(categories[category]["id"]) == str(id):
             numQ = str(len(categories[category]["questions"]))
-            return str(categories[category]["questions"][str(random.randint(1,int(numQ)))])
+            #return str(categories[category]["questions"][str(random.randint(1,int(numQ)))])
+            tempVar = categories[category]["questions"][str(random.randint(1,int(numQ)))]
+
+
+#########################################################################################
+
+            generatedBody += '''<div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv">'''
+
+            generatedBody += '''<p class="cntr lessSpace"><b>'''+tempVar["text"]+'''</b></p><form>'''
+
+            for answer in tempVar['respuestas']:
+
+
+                generatedBody += '''
+
+                <div class="checkbox">
+                  <input type="radio" name="hola">'''+answer+'''</input>
+                </div>
+
+                '''
+
+
+
+
+            generatedBody += '</form></div></div></div></div>'
+    generatedBody = Markup(generatedBody)
+
+
+    return render_template('exercises.html', cool_body = generatedBody)
+
+
 
 
 @app.route('/about_us/')
