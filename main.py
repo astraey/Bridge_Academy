@@ -10,7 +10,7 @@ def homeFunction():
 	if not session.get('logged_in'):
 		return render_template('login.html')
 	else:
-		return redirect('/prizes/')
+		return redirect(url_for("exercisesFunction"))
 
 @app.route('/profile/')
 def profileFunction():
