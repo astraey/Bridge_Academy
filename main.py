@@ -145,11 +145,11 @@ def redeemFunction(id):
 
     index = int(session.get('id_user'))
 
-    users = readJson("users.json")['users']
+    users = readJson("users.json")
 
     prizes = readJson("prizes.json")['prizes']
 
-    capital = users[int(index)]['coins']
+    capital = users['users'][int(index)]['coins']
 
     if capital < int(prizes[int(id)]['price']):
         generatedBody = '''
@@ -180,7 +180,7 @@ def redeemFunction(id):
                      '''
     else:
 
-                users[int(index)]['coins'] -= prizes[int(id)]['price']
+                users['users'][int(index)]['coins'] = int(users['users'][int(index)]['coins']) - int(prizes[int(id)]['price'])
 
                 with open('users.json', 'w') as f:
                     json.dump(users, f)
