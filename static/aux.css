@@ -40,6 +40,16 @@
   padding-top: 12px !important;
 }
 
+
 .space {
     padding-top: 20px;
+}
+
+.maxicenter{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
 }
