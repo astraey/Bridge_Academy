@@ -23,13 +23,13 @@ def profileFunction():
 
     generatedBody = '''
 
-                    <div class="row row2">
+                    <div class="maxicenter row row2">
                         <div class="col-sm-4 panel">
                             <div class="frontpage_square thumbnail">
                               <div class="cntr afterDiv">
                                   <p class="lessSpace"><b>'''+users[index]['name']+'''</b></p>
                                   <p class="lessSpace"><b>'''+users[index]['email']+'''</b></p>
-                                  <p class="lessSpace">'''+str(users[index]['coins'])+'''</p>
+                                  <p class="lessSpace">'''+str(users[index]['coins'])+'''<img class="coin" src="/static/media/coin.png"></p>
                               </div>
                             </div>
                         </div>
@@ -100,35 +100,126 @@ def prizesFunction():
 @app.route('/prizes/<id>')
 def singlePrizeFunction(id):
 
+
+        prizes = readJson("prizes.json")['prizes']
+
+
+        generatedBody = '''
+                        <div class="maxicenter row row2">
+                            <div class="col-sm-4 panel">
+                                        <div class="frontpage_square thumbnail">
+
+                                          <div class="prizeimg" align="center">
+                                            <img src="'''+prizes[int(id)]['img_url']+'''" class="imgSize"">
+                                          </div>
+                                          <div class="cntr afterDiv">
+                                              <p class="lessSpace"><b>'''+prizes[int(id)]['name']+'''</b></p>
+                                              <p class="lessSpace">'''+prizes[int(id)]['price']+'''<img class="coin" src="/static/media/coin.png"></p>
+                                          <div class="topDistance">
+                                                <a href="/prizes/redeem/'''+id+'''">
+                                                    <input type="submit" class="btn btn-primary" value="Redeem" />
+                                                </a>
+
+                                          </div>
+                                         </div>
+                                         </div>
+
+                                </div>
+                            </div>
+
+
+                     '''
+
+
+        generatedBody = Markup(generatedBody)
+
+
+        return render_template('prizes.html', cool_body = generatedBody)
+
+
+
+
+@app.route('/prizes/redeem/<id>')
+def redeemFunction(id):
+
+
+    index = int(session.get('id_user'))
+
+    users = readJson("users.json")
+
     prizes = readJson("prizes.json")['prizes']
 
+    capital = users['users'][int(index)]['coins']
 
-    generatedBody = '''
+    if capital < int(prizes[int(id)]['price']):
+        generatedBody = '''
+                        <div class="maxicenter row row2">
+                            <div class="col-sm-4 panel">
+                                        <div class="frontpage_square thumbnail">
 
-                <div class="row row2">
-                    <div class="col-sm-4 panel">
-                                <div class="frontpage_square thumbnail">
+                                          <div class="prizeimg" align="center">
+                                            <img src="'''+prizes[int(id)]['img_url']+'''" class="imgSize"">
+                                          </div>
+                                          <div class="cntr afterDiv">
+                                              <p class="lessSpace"><b>'''+prizes[int(id)]['name']+'''</b></p>
+                                              <p class="lessSpace">'''+prizes[int(id)]['price']+'''<img class="coin" src="/static/media/coin.png"></p>
+                                              <p style="color:red">You don't have enough coins</p>
+                                          <div class="topDistance">
+                                                <a href="/prizes/redeem/'''+id+'''">
+                                                    <input type="submit" class="btn btn-primary" value="Redeem" />
+                                                </a>
 
-                                  <div class="prizeimg" align="center">
-                                    <img src="'''+prizes[int(id)]['img_url']+'''" class="imgSize"">
-                                  </div>
-                                  <div class="cntr afterDiv">
-                                  <p class="lessSpace"><b>'''+prizes[int(id)]['name']+'''</b></p>
-                                  <p class="lessSpace">'''+prizes[int(id)]['price']+'''<img class="coin" src="/static/media/coin.png"></p>
-                                  <div class="topDistance"><button type="button" class="btn btn-primary">Redeem</button></div>
-                                  </div>
+                                          </div>
+                                         </div>
+                                         </div>
+
                                 </div>
-                            </a>
+                            </div>
 
-                    </div>
-                </div>
-                 '''
 
+                     '''
+    else:
+
+                users['users'][int(index)]['coins'] = int(users['users'][int(index)]['coins']) - int(prizes[int(id)]['price'])
+
+                with open('users.json', 'w') as f:
+                    json.dump(users, f)
+
+
+
+                generatedBody = '''
+                                <div class="maxicenter row row2">
+                                    <div class="col-sm-4 panel">
+                                                <div class="frontpage_square thumbnail">
+
+                                                  <div class="prizeimg" align="center">
+                                                    <img src="'''+prizes[int(id)]['img_url']+'''" class="imgSize"">
+                                                  </div>
+                                                  <div class="cntr afterDiv">
+                                                      <p class="lessSpace"><b>'''+prizes[int(id)]['name']+'''</b></p>
+                                                      <p class="lessSpace">'''+prizes[int(id)]['price']+'''<img class="coin" src="/static/media/coin.png"></p>
+                                                      <p style="color:green">The item has been succesfully redeemed</p>
+                                                  <div class="topDistance">
+                                                        <a href="/prizes/redeem/'''+id+'''">
+                                                            <input type="submit" class="btn btn-primary" value="Redeem" />
+                                                        </a>
+
+                                                  </div>
+                                                 </div>
+                                                 </div>
+
+                                        </div>
+                                    </div>
+
+
+                             '''
 
     generatedBody = Markup(generatedBody)
 
 
     return render_template('prizes.html', cool_body = generatedBody)
+
+
 
 @app.route('/exercises/')
 def exercisesFunction():
