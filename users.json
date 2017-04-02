@@ -5,7 +5,7 @@
                         "email": "doe@gmail.com",
                         "username": "john",
                         "password": "pass",
-                        "coins": 23,
+                        "coins": 500,
                         "prizes": [],
                         "answeredQuestions": [1, 2, 3],
                         "strike": 23 },

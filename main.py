@@ -100,34 +100,126 @@ def prizesFunction():
 @app.route('/prizes/<id>')
 def singlePrizeFunction(id):
 
+
+        prizes = readJson("prizes.json")['prizes']
+
+
+        generatedBody = '''
+                        <div class="maxicenter row row2">
+                            <div class="col-sm-4 panel">
+                                        <div class="frontpage_square thumbnail">
+
+                                          <div class="prizeimg" align="center">
+                                            <img src="'''+prizes[int(id)]['img_url']+'''" class="imgSize"">
+                                          </div>
+                                          <div class="cntr afterDiv">
+                                              <p class="lessSpace"><b>'''+prizes[int(id)]['name']+'''</b></p>
+                                              <p class="lessSpace">'''+prizes[int(id)]['price']+'''<img class="coin" src="/static/media/coin.png"></p>
+                                          <div class="topDistance">
+                                                <a href="/prizes/redeem/'''+id+'''">
+                                                    <input type="submit" class="btn btn-primary" value="Redeem" />
+                                                </a>
+
+                                          </div>
+                                         </div>
+                                         </div>
+
+                                </div>
+                            </div>
+
+
+                     '''
+
+
+        generatedBody = Markup(generatedBody)
+
+
+        return render_template('prizes.html', cool_body = generatedBody)
+
+
+
+
+@app.route('/prizes/redeem/<id>')
+def redeemFunction(id):
+
+
+    index = int(session.get('id_user'))
+
+    users = readJson("users.json")['users']
+
     prizes = readJson("prizes.json")['prizes']
 
+    capital = users[int(index)]['coins']
 
-    generatedBody = '''
-                    <div class="maxicenter row row2">
-                        <div class="col-sm-4 panel">
-                                    <div class="frontpage_square thumbnail">
+    if capital < int(prizes[int(id)]['price']):
+        generatedBody = '''
+                        <div class="maxicenter row row2">
+                            <div class="col-sm-4 panel">
+                                        <div class="frontpage_square thumbnail">
 
-                                      <div class="prizeimg" align="center">
-                                        <img src="'''+prizes[int(id)]['img_url']+'''" class="imgSize"">
-                                      </div>
-                                      <div class="cntr afterDiv">
-                                      <p class="lessSpace"><b>'''+prizes[int(id)]['name']+'''</b></p>
-                                      <p class="lessSpace">'''+prizes[int(id)]['price']+'''<img class="coin" src="/static/media/coin.png"></p>
-                                      <div class="topDistance"><button type="button" class="btn btn-primary">Redeem</button></div>
-                                      </div>
+                                          <div class="prizeimg" align="center">
+                                            <img src="'''+prizes[int(id)]['img_url']+'''" class="imgSize"">
+                                          </div>
+                                          <div class="cntr afterDiv">
+                                              <p class="lessSpace"><b>'''+prizes[int(id)]['name']+'''</b></p>
+                                              <p class="lessSpace">'''+prizes[int(id)]['price']+'''<img class="coin" src="/static/media/coin.png"></p>
+                                              <p style="color:red">You don't have enough coins</p>
+                                          <div class="topDistance">
+                                                <a href="/prizes/redeem/'''+id+'''">
+                                                    <input type="submit" class="btn btn-primary" value="Redeem" />
+                                                </a>
+
+                                          </div>
+                                         </div>
+                                         </div>
+
+                                </div>
+                            </div>
+
+
+                     '''
+    else:
+
+                users[int(index)]['coins'] -= prizes[int(id)]['price']
+
+                with open('users.json', 'w') as f:
+                    json.dump(users, f)
+
+
+
+                generatedBody = '''
+                                <div class="maxicenter row row2">
+                                    <div class="col-sm-4 panel">
+                                                <div class="frontpage_square thumbnail">
+
+                                                  <div class="prizeimg" align="center">
+                                                    <img src="'''+prizes[int(id)]['img_url']+'''" class="imgSize"">
+                                                  </div>
+                                                  <div class="cntr afterDiv">
+                                                      <p class="lessSpace"><b>'''+prizes[int(id)]['name']+'''</b></p>
+                                                      <p class="lessSpace">'''+prizes[int(id)]['price']+'''<img class="coin" src="/static/media/coin.png"></p>
+                                                      <p style="color:green">The item has been succesfully redeemed</p>
+                                                  <div class="topDistance">
+                                                        <a href="/prizes/redeem/'''+id+'''">
+                                                            <input type="submit" class="btn btn-primary" value="Redeem" />
+                                                        </a>
+
+                                                  </div>
+                                                 </div>
+                                                 </div>
+
+                                        </div>
                                     </div>
-                                </a>
 
-                        </div>
-                    </div>
-                 '''
 
+                             '''
 
     generatedBody = Markup(generatedBody)
 
 
     return render_template('prizes.html', cool_body = generatedBody)
+
+
 
 @app.route('/exercises/')
 def exercisesFunction():

@@ -1,8 +1,29 @@
+
+
+<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/static/aux.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
 <link rel="shortcut icon" type="image/png" href="/static/media/coin.png"/>
 
 
-<form action="/login" method="POST">
-  <input type="username" name="username" placeholder="Username">
-  <input type="password" name="password" placeholder="Password">
-  <input type="submit" value="Log in">
+
+
+
+<form class="maxicenter2" action="/login" method="POST">
+  <div class="form-group">
+    <img src="/static/media/logo.png" style="width:200;height:100;">
+    <h2 style="padding-bottom:100">BridgeAcademy</h2>
+    <p><label for="exampleInputEmail1">Username</label></p>
+    <p><input type="username" class="form-text" name="username" aria-describedby="emailHelp" placeholder="Enter username"></p>
+    <label for="exampleInputEmail1">Password</label>
+    <p><input type="password" class="form-text" name="password" aria-describedby="emailHelp" placeholder="Enter password"></p>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
 </form>
