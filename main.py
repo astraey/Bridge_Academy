@@ -261,9 +261,9 @@ def singleExercisesFunction(id):
 
 
     generatedBody = '''
-	<div class="row row2"><div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv"><p class="cntr lessSpace"><b></b></p><form action="/answered/" method="post">
-    <label for="exampleSelect1">How mutch is 4*5 - 17</label>
-    <select class="form-control" id="exampleSelect1">
+	<div class="row row3"><div class="exercices"><div class="prizeimg question frontpage_square thumbnail"><div class="space cntr afterDiv"><p class="cntr lessSpace"><b></b></p><form action="/answered/" method="post">
+    <label for="labelSpace exampleSelect1">How much is 4*5 - 17</label>
+    <select class="formControl form-control" id="exampleSelect1">
       <option>1</option>
       <option>2</option>
       <option>3</option>
@@ -273,9 +273,9 @@ def singleExercisesFunction(id):
 	</div></div></div></div>
 
 
-	<div class="row row2"><div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv"><p class="cntr lessSpace"><b></b></p><form action="/answered/" method="post">
-    <label for="exampleSelect2">What is heavier, a kilogram of metal or a kilogram of grass</label>
-    <select class="form-control" id="exampleSelect1">
+	<div class="row row3"><div class="exercices"><div class="prizeimg question frontpage_square thumbnail"><div class="space cntr afterDiv"><p class="cntr lessSpace"><b></b></p><form action="/answered/" method="post">
+    <label for="labelSpace exampleSelect2">What is heavier, a kilogram of metal or a kilogram of grass</label>
+    <select class="formControl form-control" id="exampleSelect1">
       <option>A kilogram of metal</option>
       <option>A kilogram of grass</option>
       <option>They wheight the same amout</option>
@@ -283,9 +283,9 @@ def singleExercisesFunction(id):
 	</div></div></div></div>
 
 
-	<div class="row row2"><div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv"><p class="cntr lessSpace"><b></b></p><form action="/answered/" method="post">
-    <label for="exampleSelect2">Name one of Albert Einstein's Work</label>
-    <select class="form-control" id="exampleSelect1">
+	<div class="row row3"><div class="exercices"><div class="prizeimg question frontpage_square thumbnail"><div class="space cntr afterDiv"><p class="cntr lessSpace"><b></b></p><form action="/answered/" method="post">
+    <label for="labelSpace exampleSelect2">Name one of Albert Einstein's Work</label>
+    <select class="formControl form-control" id="exampleSelect1">
       <option>Pythagorean theorem</option>
       <option>General Theory of Relativity</option>
       <option>Fundamental Theorem of Algebra</option>
@@ -294,16 +294,16 @@ def singleExercisesFunction(id):
 	</div></div></div></div>
 
 
-	<div class="row row2"><div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv"><p class="cntr lessSpace"><b></b></p><form action="/answered/" method="post">
-    <label for="exampleSelect2">If y – 9 = 25, what is the value for y?</label>
-    <select class="form-control" id="exampleSelect1">
+	<div class="row row3"><div class="exercices"><div class="prizeimg question frontpage_square thumbnail"><div class="space cntr afterDiv"><p class="cntr lessSpace"><b></b></p><form action="/answered/" method="post">
+    <label for="labelSpace exampleSelect2">If y – 9 = 25, what is the value for y?</label>
+    <select class="formControl form-control" id="exampleSelect1">
       <option>35</option>
       <option>36</option>
       <option>34</option>
     </select>
 	</div></div></div></div>
 
-	<a href="/profile/">
+	<a href="/profile/" class="buttonCenter">
 		<button type="button" class="btn cntr btn-primary">Answer</button>
 	</a>
 
@@ -335,7 +335,7 @@ def singleExercisesFunction2(id):
 
 #########################################################################################
 
-            generatedBody += '''<div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv">'''
+            generatedBody += '''<div class="exercices"><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv">'''
 
             generatedBody += '''<p class="cntr lessSpace"><b>'''+tempVar["text"]+'''</b></p><form action="/answered/" method="post">'''
 
@@ -382,7 +382,7 @@ def validateExercisesFunction(id, q, r):
 
 #########################################################################################
 
-    generatedBody += '''<div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv">'''
+    generatedBody += '''<div class"exercices"><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv">'''
 
     generatedBody += '''<p class="cntr lessSpace"><b>'''+tempVar["text"]+'''</b></p><form>'''
 

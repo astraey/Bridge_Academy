@@ -73,3 +73,28 @@
 .question {
   width: 100%
 }
+
+.exercices {
+    width: 50%;
+    margin: auto;
+    padding-top: 40px;
+}
+
+.formControl {
+    margin: auto !important;
+    width: 50% !important;
+}
+
+.labelSpace {
+    padding-bottom: 15px !important;
+}
+
+.row3 {
+    padding: 30px;
+}
+
+.buttonCenter {
+    margin: auto !important;
+    padding-bottom: 30px !important;
+    display: table;
+}
