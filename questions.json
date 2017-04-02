@@ -1,25 +1,23 @@
 {
-    "questions": {
-        "Science": {
-            "img": "",
-            "questions": {
-            "Taurus": {"doors":4, "transmission":"automatic"},
-            "Escort": {"doors":4, "transmission":"automatic"}
-            }
-        },
-        "Tech": {
-            "img": "",
-            "questions": {
-            "Sentra": {"doors":4, "transmission":"automatic"},
-            "Maxima": {"doors":4, "transmission":"automatic"}
-            }
-        },
-        "Maths": {
-            "img": "",
-            "questions": {
-            "Taurus": {"doors":4, "transmission":"automatic"},
-            "Escort": {"doors":4, "transmission":"automatic"}
-            }
+    "Science": {
+        "id": 0,
+        "questions": {
+        "1": {"doors":4, "transmission":"automatic"},
+        "2": {"doors":4, "transmission":"automatic"}
+        }
+    },
+    "Tech": {
+        "id": 1,
+        "questions": {
+        "1": {"doors":4, "transmission":"automatic"},
+        "2": {"doors":4, "transmission":"automatic"}
+        }
+    },
+    "Maths": {
+        "id": 2,
+        "questions": {
+        "1": {"doors":4, "transmission":"automatic"},
+        "2": {"doors":4, "transmission":"automatic"}
         }
     }
 }

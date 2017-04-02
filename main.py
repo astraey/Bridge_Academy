@@ -136,18 +136,16 @@ def exercisesFunction():
     generatedBody = '<div class="row row2">'
 
     # A list of the prizes
-    categories = readJson("questions.json")["questions"]
-
     for category in categories:
-
         generatedBody += '''
 
     <div class="col-sm-4 panel">
                 <a style="text-decoration:none" href="/exercises/'''+category.lower()+'''">
+                <a style="text-decoration:none" href="/exercises/'''+str(categories[category]["id"])+'''">
                 <div class="frontpage_square thumbnail">
                   <div class="prizeimg" align="center">
                     <img src="/static/media/'''+category.lower()+'''.jpg" class="imgSize"">
-                    <p class="space"><b>'''+category+'''</b></p>
+                    <img src="/static/media/'''+str(category).lower()+'''.jpg" class="imgSize"">
                   </div>
                 </div>
                 </a>
