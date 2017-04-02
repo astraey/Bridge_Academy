@@ -25,17 +25,13 @@ def profileFunction():
 
                     <div class="row row2">
                         <div class="col-sm-4 panel">
-                                    <div class="frontpage_square thumbnail">
-
-                                      <div class="cntr afterDiv">
-                                      <p class="lessSpace"><b>'''+users[index]['name']+'''</b></p>
-                                      <p class="lessSpace"><b>'''+users[index]['email']+'''</b></p>
-                                      <p class="lessSpace">'''+str(users[index]['coins'])+'''</p>
-                                      <div class="topDistance"><button type="button" class="btn btn-primary">Redeem</button></div>
-                                      </div>
-                                    </div>
-                                </a>
-
+                            <div class="frontpage_square thumbnail">
+                              <div class="cntr afterDiv">
+                                  <p class="lessSpace"><b>'''+users[index]['name']+'''</b></p>
+                                  <p class="lessSpace"><b>'''+users[index]['email']+'''</b></p>
+                                  <p class="lessSpace">'''+str(users[index]['coins'])+'''</p>
+                              </div>
+                            </div>
                         </div>
                     </div>
 
