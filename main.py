@@ -5,12 +5,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def homeFunction():
-	if session.get('wrong_password'):
-		return "wrong password"
-	if not session.get('logged_in'):
-		return render_template('login.html')
-	else:
-		return redirect('/prizes/')
+    if session.get('wrong_password'):
+        return "wrong password"
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    else:
+        return redirect('/prizes/')
 
 @app.route('/profile/')
 def profileFunction():
@@ -49,6 +49,34 @@ def profileFunction():
 
 
         return render_template('profile.html', cool_body = generatedBody)
+
+
+@app.route('/profile/<id>')
+def profileNumFunction(id):
+
+    if not session.get('logged_in'):
+        return render_template('login.html')
+
+    else:
+
+        index = int(session.get('id_user'))
+	
+
+        users = readJson("users.json")['users']
+
+        newCapital = int(users['users'][index]['coins']) + 20
+
+    users['users'][index]['coins'] = newCapital
+
+    with open('users.json', 'w') as f:
+        json.dump(users, f)
+
+
+    #generatedBody = '''<div class="maxicenter row row2"><div class="col-sm-4 panel"><div class="frontpage_square thumbnail"><div class="cntr afterDiv"><p class="lessSpace"><b>'''+users[index]['name']+'''</b></p><p class="lessSpace"><b>'''+users[index]['email']+'''</b></p><p class="lessSpace">'''+str(users[index]['coins'])+'''<img class="coin" src="/static/media/coin.png"></p></div></div></div></div>'''
+    generatedBody = "hello world!"
+    generatedBody = Markup(generatedBody)
+
+    return render_template('profile.html', cool_body = generatedBody)
 
 
 
@@ -99,10 +127,10 @@ def prizesFunction():
 def singlePrizeFunction(id):
 
 
-        prizes = readJson("prizes.json")['prizes']
+    prizes = readJson("prizes.json")['prizes']
 
 
-        generatedBody = '''
+    generatedBody = '''
                         <div class="maxicenter row row2">
                             <div class="col-sm-4 panel">
                                         <div class="frontpage_square thumbnail">
@@ -129,10 +157,10 @@ def singlePrizeFunction(id):
                      '''
 
 
-        generatedBody = Markup(generatedBody)
+    generatedBody = Markup(generatedBody)
 
 
-        return render_template('prizes.html', cool_body = generatedBody)
+    return render_template('prizes.html', cool_body = generatedBody)
 
 
 
@@ -181,14 +209,14 @@ def redeemFunction(id):
                          '''
         else:
 
-                    users['users'][int(index)]['coins'] = int(users['users'][int(index)]['coins']) - int(prizes[int(id)]['price'])
+            users['users'][int(index)]['coins'] = int(users['users'][int(index)]['coins']) - int(prizes[int(id)]['price'])
 
-                    with open('users.json', 'w') as f:
-                        json.dump(users, f)
+            with open('users.json', 'w') as f:
+                json.dump(users, f)
 
 
 
-                    generatedBody = '''
+            generatedBody = '''
                                     <div class="maxicenter row row2">
                                         <div class="col-sm-4 panel">
                                                     <div class="frontpage_square thumbnail">
@@ -303,7 +331,7 @@ def singleExercisesFunction(id):
     </select>
 	</div></div></div></div>
 
-	<a href="/profile/">
+	<a href="/profile/20">
 		<button type="button" class="btn cntr btn-primary">Answer</button>
 	</a>
 
@@ -333,7 +361,7 @@ def singleExercisesFunction2(id):
             tempVar = categories[category]["questions"][str(randomNum)]
 
 
-#########################################################################################
+            #########################################################################################
 
             generatedBody += '''<div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv">'''
 
@@ -370,17 +398,17 @@ def validateExercisesFunction(id, q, r):
 
     categories = readJson("questions.json")
     # for category in categories:
-        #if str(categories[category]["id"]) == str(id):
-            #for question in categories[category]["questions"]:
-                #if categories[category][question]['id'] == str(q):
-                    #correct = categories[category][question]['correct']
-                    #correctIndex = categories[category][question].index(correct)
-                    #if correctIndex == r:
-                        #sum2points(int(session.get('id_user')))
+    #if str(categories[category]["id"]) == str(id):
+    #for question in categories[category]["questions"]:
+    #if categories[category][question]['id'] == str(q):
+    #correct = categories[category][question]['correct']
+    #correctIndex = categories[category][question].index(correct)
+    #if correctIndex == r:
+    #sum2points(int(session.get('id_user')))
     return "no correct answer"
 
 
-#########################################################################################
+    #########################################################################################
 
     generatedBody += '''<div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv">'''
 
@@ -409,14 +437,14 @@ def validateExercisesFunction(id, q, r):
 
 @app.route('/answered/', methods=['POST'])
 def answeredFunction():
-	name=request.form['yourname']
-	email=request.form['youremail']
-	return render_template('about_us.html')
+    name=request.form['yourname']
+    email=request.form['youremail']
+    return render_template('about_us.html')
 
 
 @app.route('/about_us/')
 def about_usFunction():
-	return render_template('about_us.html')
+    return render_template('about_us.html')
 
 @app.route('/test/<variable>')
 def hello_name(variable):
@@ -437,12 +465,12 @@ def login():
 
 @app.route('/logout')
 def logout():
-		session.clear()
-		return redirect(url_for("homeFunction"))
+    session.clear()
+    return redirect(url_for("homeFunction"))
 
 def readJson(path):
-	with open(path) as json_data:
-		return json.load(json_data)
+    with open(path) as json_data:
+        return json.load(json_data)
 
 def sum2points(userid):
     users = readJson("users.json")
