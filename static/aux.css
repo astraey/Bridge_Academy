@@ -73,3 +73,12 @@
 .question {
   width: 100%
 }
+
+.lastButton{
+text-align:center;
+display: block;
+margin: 0 auto;
+text-align: center;
+padding-bottom:30
+
+}

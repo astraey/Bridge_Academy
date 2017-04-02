@@ -10,7 +10,7 @@ def homeFunction():
     if not session.get('logged_in'):
         return render_template('login.html')
     else:
-        return redirect('/prizes/')
+        return redirect('/exercises/')
 
 @app.route('/profile/')
 def profileFunction():
@@ -59,24 +59,35 @@ def profileNumFunction(id):
 
     else:
 
+
+
         index = int(session.get('id_user'))
-	
 
         users = readJson("users.json")['users']
 
-        newCapital = int(users['users'][index]['coins']) + 20
 
-    users['users'][index]['coins'] = newCapital
+        generatedBody = '''
 
-    with open('users.json', 'w') as f:
-        json.dump(users, f)
+                        <div class="maxicenter row row2">
+                            <div class="col-sm-4 panel">
+                                <div class="frontpage_square thumbnail">
+                                  <div class="cntr afterDiv">
+                                      <p class="lessSpace"><b>'''+users[index]['name']+'''</b></p>
+                                      <p class="lessSpace"><b>'''+users[index]['email']+'''</b></p>
+                                      <p class="lessSpace">'''+str(users[index]['coins'])+'''<img class="coin" src="/static/media/coin.png"></p>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
 
 
-    #generatedBody = '''<div class="maxicenter row row2"><div class="col-sm-4 panel"><div class="frontpage_square thumbnail"><div class="cntr afterDiv"><p class="lessSpace"><b>'''+users[index]['name']+'''</b></p><p class="lessSpace"><b>'''+users[index]['email']+'''</b></p><p class="lessSpace">'''+str(users[index]['coins'])+'''<img class="coin" src="/static/media/coin.png"></p></div></div></div></div>'''
-    generatedBody = "hello world!"
-    generatedBody = Markup(generatedBody)
 
-    return render_template('profile.html', cool_body = generatedBody)
+                        '''
+
+        generatedBody = Markup(generatedBody)
+
+
+        return render_template('profile.html', cool_body = generatedBody)
 
 
 
@@ -331,12 +342,12 @@ def singleExercisesFunction(id):
     </select>
 	</div></div></div></div>
 
-	<a href="/profile/20">
-		<button type="button" class="btn cntr btn-primary">Answer</button>
-	</a>
 
 
 
+		<a class="lastButton" href="/profile/20">
+			<button type="button" class="cntr btn btn-primary">Answer</button>
+		</a>
     '''
 
     generatedBody = Markup(generatedBody)
@@ -348,44 +359,6 @@ def singleExercisesFunction(id):
 
 @app.route('/exercises2/<id>')
 def singleExercisesFunction2(id):
-
-
-    generatedBody = '<div class="row row2">'
-
-    categories = readJson("questions.json")
-    for category in categories:
-        if str(categories[category]["id"]) == str(id):
-            numQ = str(len(categories[category]["questions"]))
-            #return str(categories[category]["questions"][str(random.randint(1,int(numQ)))])
-            randomNum = random.randint(1,int(numQ))
-            tempVar = categories[category]["questions"][str(randomNum)]
-
-
-            #########################################################################################
-
-            generatedBody += '''<div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv">'''
-
-            generatedBody += '''<p class="cntr lessSpace"><b>'''+tempVar["text"]+'''</b></p><form action="/answered/" method="post">'''
-
-
-
-
-            resp = []
-
-            for i in range(0, len(tempVar['respuestas'])):
-                resp.append(tempVar['respuestas'][i])
-
-                generatedBody += '''
-                <div class="checkbox">
-                <input type="radio" name="check[] value="'''+str(i)+'''"">'''+str(tempVar['respuestas'][i])+'''</input>
-                </div>
-                '''
-
-            selected = request.form.getlist('check[]')
-
-            generatedBody += '''<a href="/exercises/'''+str(id)+'''/'''+str(randomNum)+'''/'''+str(selected)+'''" class="btn btn-info" role="button">Submit</a></form></div></div></div></div>'''
-            generatedBody = Markup(generatedBody)
-
 
     return render_template('exercises.html', cool_body = generatedBody)
 
