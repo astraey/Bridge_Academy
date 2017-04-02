@@ -239,12 +239,7 @@ def redeemFunction(id):
                                                           <p class="lessSpace"><b>'''+prizes[int(id)]['name']+'''</b></p>
                                                           <p class="lessSpace">'''+prizes[int(id)]['price']+'''<img class="coin" src="/static/media/coin.png"></p>
                                                           <p style="color:green">The item has been succesfully redeemed</p>
-                                                      <div class="topDistance">
-                                                            <a href="/prizes/redeem/'''+id+'''">
-                                                                <input type="submit" class="btn btn-primary" value="Redeem" />
-                                                            </a>
 
-                                                      </div>
                                                      </div>
                                                      </div>
 
