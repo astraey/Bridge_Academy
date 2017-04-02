@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session, url_for, redirect, Markup
-import json, os
+import json, os, random
 
 app = Flask(__name__)
 
@@ -136,16 +136,16 @@ def exercisesFunction():
     generatedBody = '<div class="row row2">'
 
     # A list of the prizes
+    categories = readJson("questions.json")
     for category in categories:
         generatedBody += '''
 
     <div class="col-sm-4 panel">
-                <a style="text-decoration:none" href="/exercises/'''+category.lower()+'''">
                 <a style="text-decoration:none" href="/exercises/'''+str(categories[category]["id"])+'''">
                 <div class="frontpage_square thumbnail">
                   <div class="prizeimg" align="center">
-                    <img src="/static/media/'''+category.lower()+'''.jpg" class="imgSize"">
                     <img src="/static/media/'''+str(category).lower()+'''.jpg" class="imgSize"">
+                    <p class="space"><b>'''+str(category)+'''</b></p>
                   </div>
                 </div>
                 </a>
@@ -161,9 +161,16 @@ def exercisesFunction():
 
     return render_template('exercises.html', cool_body = generatedBody)
 
-@app.route('/singleExercise/')
-def singleExerciseFunction():
-	return singleExercise.singleExerciseGenerator()
+
+@app.route('/exercises/<id>')
+def singleExercisesFunction(id):
+
+    categories = readJson("questions.json")
+    for category in categories:
+        if str(categories[category]["id"]) == str(id):
+            numQ = str(len(categories[category]["questions"]))
+            return str(categories[category]["questions"][str(random.randint(1,int(numQ)))])
+    
 
 @app.route('/about_us/')
 def about_usFunction():
@@ -194,6 +201,10 @@ def logout():
 def readJson(path):
 	with open(path) as json_data:
 		return json.load(json_data)
+
+def dumpJson(path):
+	with open(path) as json_data:
+		return json.dump(json_data)
 
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)

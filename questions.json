@@ -9,14 +9,14 @@
     "Tech": {
         "id": 1,
         "questions": {
-        "1": {"doors":4, "transmission":"automatic"},
+        "1": {"doors":4, "transmission":"adfdsatic"},
         "2": {"doors":4, "transmission":"automatic"}
         }
     },
     "Maths": {
         "id": 2,
         "questions": {
-        "1": {"doors":4, "transmission":"automatic"},
+        "1": {"doors":4, "transmission":"au5353omatic"},
         "2": {"doors":4, "transmission":"automatic"}
         }
     }
