@@ -1,7 +1,8 @@
 {
   "users": [
                      {  "name": "John Doe",
-                        "email": "Doe",
+                        "id": "0",
+                        "email": "doe@gmail.com",
                         "username": "john",
                         "password": "pass",
                         "coins": 23,
@@ -10,7 +11,8 @@
                         "strike": 23 },
 
                      {  "name": "Mario Doe",
-                        "email": "Doe",
+                        "id": "1",
+                        "email": "jao@gmail.com",
                         "username": "mario",
                         "password": "pass2",
                         "coins": 23,
