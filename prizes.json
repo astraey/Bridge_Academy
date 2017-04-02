@@ -1,59 +1,74 @@
 {
   "prizes": [
                      {  "name": "Red Truck",
+                        "id": "0",
                         "category": "Toy",
                         "img_url": "/static/media/redtruck.png",
-                        "price": "20",
+                        "price": "25",
                         "description": "Made of Quality Die Cast Metal. Doors Openable. Pull Back Action Drives Truck Forward. Scale is 1:32."
                       },
 
-                      {  "name": "Playground Set",
-                         "category": "Building Sets & Blocks",
+                      {  "name": "Playmobil Playground Set",
+                        "id": "1",
+                         "category": "Toy",
                          "img_url": "/static/media/playmobil.png",
-                         "price": "20",
+                         "price": "35",
                          "description": "The Playmobil Playground has some outdoor fun for everyone. Kids will love racing figures down the slide or giving them a push on the swing. Figures can bend, sit, stand and turn their heads. Encourages children to explore and learn while having fun. Set also includes one adult and four children figures, kite, park bench, sand toys, cooler and additional accessories."
                        },
 
                        {  "name": "Amazon Fire Tablet",
+                         "id": "2",
                           "category": "Technology",
                           "img_url": "/static/media/fire.png",
-                          "price": "20",
+                          "price": "100",
                           "description": "Beautiful 7'' IPS display and 1.3 GHz quad-core processor. Available in four colors. Now with the Alexa cloud-based voice service - just press and ask. Enjoy millions of movies, TV shows, songs, Kindle e-books, apps and games. 8 or 16 GB of internal storage and a microSD slot for up to 200 GB of expandable storage. Prime members get unlimited access to a huge selection of songs, books, videos and more. Up to 7 hours of battery life."
                         },
 
                       {  "name": "Princess Rapunzel Doll",
+                         "id": "3",
                          "category": "Toy",
                          "img_url": "/static/media/doll.png",
-                         "price": "20",
+                         "price": "25",
                          "description": "Doll comes with removable shoes. Doll has movie-inspired features. Doll features a shimmering gown in her signature color. Gown has beautiful ombre and glitter accents. Includes doll, outfit, and pair of shoes."
                        },
 
                        {  "name": "Rubik's Cube Game",
+                          "id": "4",
                           "category": "Toy",
                           "img_url": "/static/media/cube.png",
-                          "price": "20",
+                          "price": "10",
                           "description": "Billions of combinations, one solution. Comes with a display stand. Rubik's Cube game challenges you to figure out how to get all the colors matched up on all 9 sides. Includes Rubik's Cube and display stand."
                         },
 
                         {  "name": "Raspberry Pi 3 Model B Motherboard",
+                           "id": "5",
                            "category": "Technology",
                            "img_url": "/static/media/pi.png",
-                           "price": "20",
+                           "price": "45",
                            "description": "A shiny red truck"
                          },
 
-                         {  "name": "Red Truck",
+                         {  "name": "LEGO Millennium Falcon",
+                            "id": "6",
                             "category": "Toy",
-                            "img_url": "url here",
-                            "price": "20",
-                            "description": "A shiny red truck"
+                            "img_url": "/static/media/lego.png",
+                            "price": "60",
+                            "description": "Hide weapons and other cargo in the secret compartment. Pretend to activate the hyperdrive and make a fast getaway. Recreate fantastic scenes from Star Wars: The Force Awakens. The perfect addition to any LEGO Star Wars collection."
                           },
 
-                          {  "name": "Doll",
-                             "category": "Toy",
-                             "img_url": "url here",
-                             "price": "20",
-                             "description": "Lovely Doll"
-                           }
+                          {  "name": "Drone Phantom",
+                             "id": "7",
+                             "category": "Technology",
+                             "img_url": "/static/media/drone.png",
+                             "price": "600",
+                             "description": "The Phantom 4 Pro from DJI boasts a 3-axis-stabilized gimbal camera with a 20MP, 1' CMOS sensor capable of shooting up to 4K/60fps video and well as photo bursts at up to 14 fps. The hull has been updated from the previous Phantom 4, now featuring magnesium alloy construction for increased rigidity and reduced weight. The FlightAutonomy system adds dual rear-vision sensors plus infrared sensing for a total of five directions of obstacle sensing and four directions of obstacle avoidance."
+                           },
+                           {  "name": "Robotics Arduino Kit",
+                              "id": "8",
+                              "category": "Technology",
+                              "img_url": "/static/media/arduino.png",
+                              "price": "70",
+                              "description": "The Bioloid STEM is a kit that has 7 example robots and 21 weeks’ educational material. It is recommended since the STEM standard teaches from basic to advance levels on the electronic, mechanical and programming principles of your robot. By using this kit, centrifugal force, centripetal force, sound, differential gear, steering mechanisms and other more principles will be discussed. This kit is not just recommended by adults but also for students since it has a complete training program that will help you if you are just starting into robotics."
+                            }
                    ]
 }

@@ -33,16 +33,15 @@ def prizesFunction():
 
 
     <div class="col-sm-4 panel">
+            <a style="text-decoration:none" href="/prizes/'''+prize['id']+'''">
                 <div class="frontpage_square thumbnail">
 
                   <div class="prizeimg" align="center">
                     <img src="'''+prize['img_url']+'''" class="imgSize"">
-
-                  </a>
                   </div>
                   <div class="cntr afterDiv">
                   <p class="lessSpace"><b>'''+prize['name']+'''</b></p>
-                  <p class="lessSpace">'''+prize['price']+" coins"'''</p>
+                  <p class="lessSpace">'''+prize['price']+'''<img class="coin" src="/static/media/coin.png"></p>
                   </div>
                 </div>
             </a>
@@ -57,9 +56,44 @@ def prizesFunction():
 
     return render_template('prizes.html', cool_body = generatedBody)
 
-@app.route('/singlePrize/')
-def singlePrizeFunction():
-	return singlePrize.singlePrizeGenerator()
+@app.route('/prizes/<id>')
+def singlePrizeFunction(id):
+
+
+    generatedBody = '<div class="row row2">'
+
+    # A list of the prizes
+    prizes = readJson("prizes.json")['prizes']
+
+
+
+
+    generatedBody += '''
+
+
+                <div class="col-sm-4 panel">
+                            <div class="frontpage_square thumbnail">
+
+                              <div class="prizeimg" align="center">
+                                <img src="'''+prizes[int(id)]['img_url']+'''" class="imgSize"">
+                              </div>
+                              <div class="cntr afterDiv">
+                              <p class="lessSpace"><b>'''+prizes[int(id)]['name']+'''</b></p>
+                              <p class="lessSpace">'''+prizes[int(id)]['price']+'''<img class="coin" src="/static/media/coin.png"></p>
+                              <div class="topDistance"><button type="button" class="btn btn-primary">Redeem</button></div>
+                              </div>
+                            </div>
+                        </a>
+
+                </div>
+
+                 '''
+
+    generatedBody += '</div>'
+    generatedBody = Markup(generatedBody)
+
+
+    return render_template('prizes.html', cool_body = generatedBody)
 
 @app.route('/exercises/')
 def exercisesFunction():

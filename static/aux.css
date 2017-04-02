@@ -18,7 +18,7 @@
 }
 
 .lessSpace {
-    margin-bottom: -3px;
+    margin-bottom: 0px;
 }
 
 .imgSize {
@@ -27,4 +27,15 @@
 
 .afterDiv{
     padding-bottom: 20px;
+}
+
+.coin{
+  width:16;
+  height:16;
+  margin-bottom: 3px;
+  padding-left: 3px;
+}
+
+.topDistance{
+  padding-top: 12px !important;
 }
