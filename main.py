@@ -254,8 +254,73 @@ def exercisesFunction():
     return render_template('exercises.html', cool_body = generatedBody)
 
 
+
+
 @app.route('/exercises/<id>')
 def singleExercisesFunction(id):
+
+
+    generatedBody = '''
+	<div class="row row2"><div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv"><p class="cntr lessSpace"><b></b></p><form action="/answered/" method="post">
+    <label for="exampleSelect1">How mutch is 4*5 - 17</label>
+    <select class="form-control" id="exampleSelect1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+	</div></div></div></div>
+
+
+	<div class="row row2"><div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv"><p class="cntr lessSpace"><b></b></p><form action="/answered/" method="post">
+    <label for="exampleSelect2">What is heavier, a kilogram of metal or a kilogram of grass</label>
+    <select class="form-control" id="exampleSelect1">
+      <option>A kilogram of metal</option>
+      <option>A kilogram of grass</option>
+      <option>They wheight the same amout</option>
+    </select>
+	</div></div></div></div>
+
+
+	<div class="row row2"><div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv"><p class="cntr lessSpace"><b></b></p><form action="/answered/" method="post">
+    <label for="exampleSelect2">Name one of Albert Einstein's Work</label>
+    <select class="form-control" id="exampleSelect1">
+      <option>Pythagorean theorem</option>
+      <option>General Theory of Relativity</option>
+      <option>Fundamental Theorem of Algebra</option>
+	  <option>The Four Color Problem</option>
+    </select>
+	</div></div></div></div>
+
+
+	<div class="row row2"><div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv"><p class="cntr lessSpace"><b></b></p><form action="/answered/" method="post">
+    <label for="exampleSelect2">If y – 9 = 25, what is the value for y?</label>
+    <select class="form-control" id="exampleSelect1">
+      <option>35</option>
+      <option>36</option>
+      <option>34</option>
+    </select>
+	</div></div></div></div>
+
+	<a href="/profile/">
+		<button type="button" class="btn cntr btn-primary">Answer</button>
+	</a>
+
+
+
+    '''
+
+    generatedBody = Markup(generatedBody)
+
+
+    return render_template('exercises.html', cool_body = generatedBody)
+
+
+
+@app.route('/exercises2/<id>')
+def singleExercisesFunction2(id):
+
 
     generatedBody = '<div class="row row2">'
 
@@ -272,10 +337,13 @@ def singleExercisesFunction(id):
 
             generatedBody += '''<div><div class="prizeimg question frontpage_square thumbnail"><div class="cntr afterDiv">'''
 
-            generatedBody += '''<p class="cntr lessSpace"><b>'''+tempVar["text"]+'''</b></p><form method="post">'''
-            
+            generatedBody += '''<p class="cntr lessSpace"><b>'''+tempVar["text"]+'''</b></p><form action="/answered/" method="post">'''
+
+
+
+
             resp = []
-            
+
             for i in range(0, len(tempVar['respuestas'])):
                 resp.append(tempVar['respuestas'][i])
 
@@ -285,13 +353,14 @@ def singleExercisesFunction(id):
                 </div>
                 '''
 
-            selected = request.form.getlist('check[]')          
+            selected = request.form.getlist('check[]')
 
             generatedBody += '''<a href="/exercises/'''+str(id)+'''/'''+str(randomNum)+'''/'''+str(selected)+'''" class="btn btn-info" role="button">Submit</a></form></div></div></div></div>'''
             generatedBody = Markup(generatedBody)
 
 
     return render_template('exercises.html', cool_body = generatedBody)
+
 
 @app.route('/exercises/<id>/<q>/<r>')
 def validateExercisesFunction(id, q, r):
@@ -300,16 +369,16 @@ def validateExercisesFunction(id, q, r):
     generatedBody = '<div class="row row2">'
 
     categories = readJson("questions.json")
-    for category in categories:
-        if str(categories[category]["id"]) == str(id):
-            for question in categories[category]["questions"]:
-                if categories[category][question]['id'] == str(q):
-                    correct = categories[category][question]['correct']
-                    correctIndex = categories[category][question].index(correct)
-                    if correctIndex == r:
-                        sum2points(int(session.get('id_user')))
+    # for category in categories:
+        #if str(categories[category]["id"]) == str(id):
+            #for question in categories[category]["questions"]:
+                #if categories[category][question]['id'] == str(q):
+                    #correct = categories[category][question]['correct']
+                    #correctIndex = categories[category][question].index(correct)
+                    #if correctIndex == r:
+                        #sum2points(int(session.get('id_user')))
     return "no correct answer"
-                            
+
 
 #########################################################################################
 
@@ -336,6 +405,13 @@ def validateExercisesFunction(id, q, r):
 
 
     return render_template('exercises.html', cool_body = generatedBody)
+
+
+@app.route('/answered/', methods=['POST'])
+def answeredFunction():
+	name=request.form['yourname']
+	email=request.form['youremail']
+	return render_template('about_us.html')
 
 
 @app.route('/about_us/')
